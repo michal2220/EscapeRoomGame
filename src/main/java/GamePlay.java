@@ -1,6 +1,3 @@
-import Items.LightBulb;
-import Items.Nail;
-import Items.OldSock;
 import Room.Wardrobe;
 
 public class GamePlay {
@@ -8,9 +5,8 @@ public class GamePlay {
     TextInfo textInfo;
     Wardrobe wardrobe;
     PickubleItems pickubleItems;
-    Nail nail;
-    OldSock oldSock;
-    LightBulb lightBulb;
+    Equipment equipment;
+    Mechanics mechanics;
     boolean isFinished = false;
 
     public void play() {
@@ -37,18 +33,17 @@ public class GamePlay {
                 case "zbadaj szufladę szafy":
                     if (wardrobe.getDrawer().equals("otwarta")){
                         textInfo.openedWardrobeDrawer();
+                        mechanics.getItemsFromDrawer();
+                        wardrobe.setDrawer("zbadana");
                     } else {
                         textInfo.closedWardrobeDrawer();
                     }
                     break;
                 case "weź":
-                    System.out.println("co chesz zabrać?");
-                    System.out.println(pickubleItems.getItems());
-                    word = Input.getInput();
-                    if (word.equals("gwóźdź")){
-                        pickubleItems.getItems().remove(nail);
-                    }
-
+                    mechanics.takeMechanics();
+                    break;
+                case "ekwipunek":
+                    mechanics.getEquipement();
                     break;
                 default:
                     System.out.println("Nieznana komedna");
@@ -57,10 +52,13 @@ public class GamePlay {
     }
 
 
-    public GamePlay(TextInfo textInfo, Wardrobe wardrobe, PickubleItems pickubleItems) {
+
+    public GamePlay(TextInfo textInfo, Wardrobe wardrobe, PickubleItems pickubleItems, Equipment equipment) {
         this.textInfo = textInfo;
         this.wardrobe = wardrobe;
         this.pickubleItems = pickubleItems;
+        this.equipment = equipment;
+        this.mechanics = new Mechanics(pickubleItems, equipment);
     }
 
 

@@ -9,8 +9,9 @@ public class Main {
         Wardrobe wardrobe = new Wardrobe();
         ChestOfDrawers chestOfDrawers = new ChestOfDrawers();
         PickubleItems pickubleItems = new PickubleItems();
+        Equipment equipment = new Equipment();
         TextInfo textInfo = new TextInfo(wardrobe, chestOfDrawers, pickubleItems);
-        GamePlay gamePlay = new GamePlay(textInfo, wardrobe, pickubleItems);
+        GamePlay gamePlay = new GamePlay(textInfo, wardrobe, pickubleItems, equipment);
         while (!gamePlay.isFinished) {
             gamePlay.play();
         }
