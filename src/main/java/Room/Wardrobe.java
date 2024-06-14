@@ -1,8 +1,9 @@
 package Room;
 
 public class Wardrobe {
+    private boolean doorExamined =false;
     private String door = "zamkniete";
-    private boolean isDoorOpened = false;
+    private boolean doorOpened = false;
     private String drawer = "zamknięta";
     private boolean isDrawerOpened = false;
 
@@ -20,7 +21,7 @@ public class Wardrobe {
 
     public void openWardrobeDoor() {
         setDoor("otwarte");
-        isDoorOpened = true;
+        doorOpened = true;
     }
 
     public String getDrawer() {
@@ -33,10 +34,14 @@ public class Wardrobe {
     }
 
     public boolean isDoorOpened() {
-        return isDoorOpened;
+        return doorOpened;
+    }
+    public boolean isDoorExamined() {
+        return doorExamined;
     }
 
-    public boolean isDrawerOpened() {
-        return isDrawerOpened;
+    public void setDoorAlreadyExamined() {
+        this.doorExamined = true;
     }
+
 }

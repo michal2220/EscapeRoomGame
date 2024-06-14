@@ -14,7 +14,7 @@ public class Mechanics {
         this.equipment = equipment;
     }
 
-    public void getItemsFromDrawer() {
+    public void AddItemsFromDrawerToPickable() {
         pickubleItems.getItems().add(oldSock);
         pickubleItems.getItems().add(nail);
         pickubleItems.getItems().add(lightBulb);

@@ -1,5 +1,7 @@
 import Room.Wardrobe;
 
+import java.util.ArrayList;
+
 public class GamePlay {
 
     TextInfo textInfo;
@@ -26,14 +28,16 @@ public class GamePlay {
                 case "zbadaj szafę":
                     if (!wardrobe.isDoorOpened()) {
                         textInfo.closedWardrobeDoor();
+                    } else if(wardrobe.isDoorExamined()) {
+                        textInfo.wardrobeAlreadyExamined();
                     } else {
                         textInfo.openedWardrobeDoor();
                     }
                     break;
                 case "zbadaj szufladę szafy":
                     if (wardrobe.getDrawer().equals("otwarta")){
-                        textInfo.openedWardrobeDrawer();
-                        mechanics.getItemsFromDrawer();
+                        mechanics.AddItemsFromDrawerToPickable();
+                        textInfo.openedWardrobeDrawer(new ArrayList<>());
                         wardrobe.setDrawer("zbadana");
                     } else {
                         textInfo.closedWardrobeDrawer();
