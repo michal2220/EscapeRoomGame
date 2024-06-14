@@ -1,2 +1,6 @@
-package Items;public interface Items {
+package Items;
+
+public interface Items {
+
+    String toString();
 }
